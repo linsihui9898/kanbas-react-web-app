@@ -1,16 +1,21 @@
 <element style="property1: value1; property2: value2">
     element body
 </element>
-
 <html>
 <head>
     <style>
+        selector1 {
+            property1: value1;
+            property2: value2;
+        }
+     </style>
+     <style>
         p {
             background-color: blue;
             color: white;
         }
     </style>
-</head>
+<head>
 <body>
 <h1>Cascading Style Sheets (CSS)</h1>
 <h2>Style attribute and tag</h2>
@@ -18,12 +23,6 @@
 <p style="background-color: blue; color: white">
   Style attribute allows configuring look and feel right on the element. Although it's very convenient it is considered bad practice and you should avoid using the style attribute
 </p>
-    <style>
-        p {
-            background-color: blue;
-            color: white;
-        }
-    </style>
 <h3>Style tag</h3>
 <p>
 A slightly better way to configure look and feel
@@ -38,11 +37,17 @@ rule referring to the P tags
             background-color: blue;
             color: white;
         }
-    </style!-->
+    </style！-->
     <link href="index.css"
-    rel="stylesheet"/>
+          rel="stylesheet"/>
  </head>
- 
+<h3>Link tag</h3>
+<p>
+   The best way to apply CSS rules is to declare
+   them in a separate CSS file and load it with 
+   the LINK tag. Always use this method.
+</p>
+
 </body>
 </html>
 
