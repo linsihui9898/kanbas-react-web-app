@@ -14,7 +14,7 @@
    color: white;
    background-color: black;
    text-align: center;
-   font-size: 12px;
+   font-size: 0.8em;
    align-items: center;
    border-radius: 0;
    width: 85px;
@@ -24,7 +24,7 @@
 
 .custom-sidebar .nav-link i {
    color: red;
-   margin-bottom: 0px;
+   margin-bottom: 5px;
 }
 
 .custom-sidebar .nav-link:hover {
