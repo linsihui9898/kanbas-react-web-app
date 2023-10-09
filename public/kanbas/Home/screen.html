@@ -219,9 +219,7 @@
     </div>
 
     <script>
-        // while click on text left black boarder shows up
         document.addEventListener('DOMContentLoaded', function () {
-            // This code runs when the page loads
             var selectedLink = localStorage.getItem('selectedLink');
             if (selectedLink) {
                 var linkElement = document.querySelector(`a[href="${selectedLink}"]`);
@@ -232,7 +230,6 @@
         });
 
         document.addEventListener('click', function (e) {
-            // This code runs when a link is clicked
             if (e.target.tagName === 'A') {
                 localStorage.setItem('selectedLink', e.target.getAttribute('href'));
             }
