@@ -1,9 +1,7 @@
  .custom-sidebar {
    background-color: black;
    width: 85px;
-   /* You can adjust between 75px and 85px */
    position: fixed;
-   /* Fixed position on the left */
    top: 0;
    left: 0;
    height: 100vh;
@@ -21,14 +19,12 @@
    border-radius: 0;
    width: 85px;
    transition: background-color 0.3s, color 0.3s;
-   /* Smooth transition for hover and active states */
+
 }
 
 .custom-sidebar .nav-link i {
    color: red;
-   /* Red color for icons */
    margin-bottom: 5px;
-   /* Space between icon and text */
 }
 
 .custom-sidebar .nav-link:hover {
@@ -46,7 +42,6 @@
 }
 
 
-/* Specific styling for Account icon */
 .nav-item .fa-user-circle {
    color: white;
 }
@@ -65,17 +60,11 @@
 .custom-container {
    text-align: center;
    background-color: black;
-   /* Box background color */
    color: white;
-   /* Text color */
    width: 80px;
-   /* Width of the box */
    height: 100px;
-   /* Height of the box */
    border: none;
-   /* Border for the box */
    border-radius: 5px;
-   /* Rounded corners for the box */
 }
 
 .account-sidebar {
@@ -88,11 +77,8 @@
    color: rgb(211, 14, 14);
    text-decoration: none;
    padding: 8px 10px;
-   /* Some padding for aesthetics */
    display: block;
-   /* To make the entire area clickable */
    margin-bottom: 5px;
-   /* Space between the links, adjust between 15-20px as needed */
 }
 
 .account-link:hover {
@@ -102,16 +88,12 @@
 .account-link.active {
    color: black;
    border-left: 3px solid black;
-   /* Black border to the left */
    padding-left: 7px;
-   /* Adjust padding to keep width consistent */
 }
 
 .account-link.selected {
    border-left: 2px solid black;
-   /* Add a 3px black border to the left */
    padding-left: 5px;
-   /* Adjust padding to account for the border and maintain alignment */
 }
 
 a.selected {
@@ -182,7 +164,6 @@ html {
 
 .card {
    width: 260px;
-   /* Set width between 250 and 270 pixels */
 }
 
 
@@ -199,14 +180,12 @@ html {
 
 #kanbasNav.show {
    left: 0;
-   /* Show it when .show class is added */
 }
 
 
 #courseNav {
    width: 150px;
    flex: none;
-   /* This ensures the width doesn't change even in a flex container */
 }
 
 .kanbasModal {
@@ -214,14 +193,10 @@ html {
    top: 0;
    left: 0;
    width: 100%;
-   /* full width of the viewport */
    height: 100vh;
-   /* full height of the viewport */
    background-color: rgba(0, 0, 0, 0.5);
-   /* semi-transparent background */
    z-index: 2000;
    display: none;
-   /* start hidden */
 }
 
 .kanbasContent {
@@ -229,7 +204,6 @@ html {
    height: 100vh;
    background-color: white;
    box-shadow: none;
-   /* remove shadow since it's now fullscreen */
 }
 
 .close-btn {
@@ -237,24 +211,17 @@ html {
    right: 10px;
    top: 10px;
    z-index: 2001;
-   /* ensure the close button is above everything else */
 }
 
 .kanbasEmbedded {
    text-align: center;
    background-color: white;
 
-   /* Box background color */
    color: red;
-   /* Text color */
    width: 300px;
-   /* Width of the box */
    height: 100px;
-   /* Height of the box */
    border: none;
-   /* Border for the box */
    border-radius: 5px;
-   /* Rounded corners for the box */
 }
 
 .kanbasEmbedded .nav-link {
@@ -277,11 +244,9 @@ html {
    z-index: 10;
 }
 
-/* Assignment */
 .with-border {
    position: relative;
    padding-left: 40px !important;
-   /* Increased the padding */
    border-left: 2px solid green !important;
 }
 
@@ -322,28 +287,24 @@ html {
    border: 1px solid #ccc;
    padding: 10px;
    border-radius: 5px;
-   /* Optional: for rounded borders */
 }
 
 .nav-tabs .nav-link {
    color: red;
-   /* Set color for unselected tabs */
 }
 
 .nav-tabs .nav-link.active {
    color: black;
-   /* Set color for the selected tab */
 }
 
 .nav-tabs .nav-link:hover {
    color: black;
-   /* Set color for the selected tab */
 }
 
 
 .logo {
-   height: 100%;  /* or the height you want */
-   width: 100%;   /* or the width you want */
-   object-fit: cover;  /* or contain, depending on your needs */
+   height: 100%; 
+   width: 100%; 
+   object-fit: cover; 
    transition: transform 0.3s;
 }
