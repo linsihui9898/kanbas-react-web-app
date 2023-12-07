@@ -8,6 +8,13 @@ function WorkingWithArrays() {
         <a href={API} className="btn btn-primary me-2">
           Get Todos
         </a>
+
+        <h3>Filtering Array Items</h3>
+        <a href={`${API}?completed=true`}
+           className="btn btn-primary me-2" >
+          Get Completed Todos
+        </a>
+
         <h4>Retrieving an Item from an Array by ID</h4>
         <input
           className="form-control"
