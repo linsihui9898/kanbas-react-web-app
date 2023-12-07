@@ -1,9 +1,32 @@
+import React, { useState } from "react";
+
 function WorkingWithArrays() {
+    const [todo, setTodo] = useState({
+      id: 1,
+      title: "NodeJS Assignment",
+      description: "Create a NodeJS server with ExpressJS",
+      due: "2021-09-09",
+      completed: false,
+    });
+
     const API = "http://localhost:4000/a5/todos";
     const [todo, setTodo] = useState({});
     return (
       <div>
         <h3>Working with Arrays</h3>
+        <input
+        value={todo.id}
+        onChange={(e) => setTodo({
+          ...todo, id: e.target.value })}
+        className="form-control mb-2"
+        type="number"
+        />
+        <h3>Deleting from an Array</h3>
+        <a href={`${API}/${todo.id}/delete`}
+           className="btn btn-primary me-2">
+          Delete Todo with ID = {todo.id}
+        </a>
+
         <h4>Retrieving Arrays</h4>
         <a href={API} className="btn btn-primary me-2">
           Get Todos
