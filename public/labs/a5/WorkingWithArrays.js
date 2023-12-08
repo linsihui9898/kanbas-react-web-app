@@ -24,11 +24,24 @@ function WorkingWithArrays() {
       const response = await axios.get(API);
       setTodos(response.data);
     };
+
+    const fetchTodoById = async (id) => {
+      const response = await axios.get(`${API}/${id}`);
+      setTodo(response.data);
+    };
+  
     const removeTodo = async (todo) => {
       const response = await axios
         .get(`${API}/${todo.id}/delete`);
       setTodos(response.data);
     };
+
+    const updateTitle = async () => {
+      const response = await axios.get(
+        `${API}/${todo.id}/title/${todo.title}`);
+      setTodos(response.data);
+    };
+  
   
     useEffect(() => {
       fetchTodos();
@@ -59,10 +72,21 @@ function WorkingWithArrays() {
           className="form-control mb-2"
           type="text"
         />
+
+        <button onClick={updateTitle}
+                className="btn btn-success mb-2 w-100">
+          Update Title
+        </button>
+        
         <ul className="list-group">
           {todos.map((todo) => (
             <li key={todo.id}
                 className="list-group-item">
+              <button
+                onClick={() => fetchTodoById(todo.id)}
+                className="btn btn-warning me-2 float-end" >
+                Edit
+              </button>
               <button
                 onClick={() => removeTodo(todo)}
                 className="btn btn-danger float-end" >
