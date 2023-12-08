@@ -21,6 +21,22 @@ function WorkingWithArrays() {
         className="form-control mb-2"
         type="number"
         />
+
+      <input
+        value={todo.title}
+        onChange={(e) => setTodo({
+          ...todo, title: e.target.value })}
+        className="form-control mb-2"
+        type="text"
+      />
+      <h3>Updating an Item in an Array</h3>
+      <a
+        href={`${API}/${todo.id}/title/${todo.title}`}
+        className="btn btn-primary me-2" >
+        Update Title to {todo.title}
+      </a>
+
+
         <h3>Deleting from an Array</h3>
         <a href={`${API}/${todo.id}/delete`}
            className="btn btn-primary me-2">
