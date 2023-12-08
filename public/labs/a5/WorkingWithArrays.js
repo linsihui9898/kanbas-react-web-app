@@ -11,9 +11,16 @@ function WorkingWithArrays() {
     });
 
     const API = "http://localhost:4000/a5/todos";
-    const [todo, setTodo] = useState({});
+    //const [todo, setTodo] = useState({});
+  
 
     const [todos, setTodos] = useState([]);
+
+    const postTodo = async () => {
+      const response = await axios.post(API, todo);
+      setTodos([...todos, response.data]);
+    };
+  
 
     const createTodo = async () => {
       const response = await axios.get(`${API}/create`);
@@ -73,6 +80,28 @@ function WorkingWithArrays() {
           type="text"
         />
 
+        <textarea
+          onChange={(e) => setTodo({ ...todo,
+            description: e.target.value })}
+          value={todo.description} type="text"
+        />
+        <input
+          onChange={(e) => setTodo({
+            ...todo, due: e.target.value })}
+          value={todo.due} type="date"
+        />
+        <label>
+          <input
+            onChange={(e) => setTodo({
+              ...todo, completed: e.target.checked })}
+            value={todo.completed} type="checkbox"
+          />
+          Completed
+        </label>
+        <button onClick={postTodo} >
+          Post Todo
+        </button>
+
         <button onClick={updateTitle}
                 className="btn btn-success mb-2 w-100">
           Update Title
@@ -92,7 +121,14 @@ function WorkingWithArrays() {
                 className="btn btn-danger float-end" >
                 Remove
               </button>
+
+              <input
+                checked={todo.completed}
+                type="checkbox" readOnly
+              />
               {todo.title}
+              <p>{todo.description}</p>
+              <p>{todo.due}</p>
             </li>
           ))}
         </ul>
