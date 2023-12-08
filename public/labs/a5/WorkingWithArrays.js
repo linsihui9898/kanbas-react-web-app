@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 function WorkingWithArrays() {
+    const [errorMessage, setErrorMessage] = useState(null);
     const [todo, setTodo] = useState({
       id: 1,
       title: "NodeJS Assignment",
@@ -38,9 +39,15 @@ function WorkingWithArrays() {
     };
 
     const deleteTodo = async (todo) => {
-      const response = await axios.delete(`${API}/${todo.id}`);
-      setTodos(todos.filter((t) => t.id !== todo.id));
-    };  
+      try {
+        const response = await axios.delete(
+          `${API}/${todo.id}`);
+        setTodos(todos.filter((t) => t.id !== todo.id));
+      } catch (error) {
+        console.log(error);
+        setErrorMessage(error.response.data.message);
+      }
+    };    
   
     const removeTodo = async (todo) => {
       const response = await axios
@@ -55,19 +62,22 @@ function WorkingWithArrays() {
     };
 
     const updateTodo = async () => {
-      const response = await axios.put(
-        `${API}/${todo.id}`, todo);
-      setTodos(todos.map((t) => (
-        t.id === todo.id ? todo : t)));
-      setTodo({});
-    };  
+      try {
+        const response = await axios.put(
+          `${API}/${todo.id}`, todo);
+        setTodos(todos.map((t) => (
+          t.id === todo.id ? todo : t)));
+        setTodo({});
+      } catch (error) {
+        console.log(error);
+        setErrorMessage(error.response.data.message);
+      }
+    };
   
     useEffect(() => {
       fetchTodos();
     }, []);
 
-
-  
     return (
       <div>
         <h3>Working with Arrays</h3>
@@ -91,6 +101,11 @@ function WorkingWithArrays() {
         <button onClick={updateTodo}>
           Update Todo
         </button>
+        {errorMessage && (
+        <div className="alert alert-danger mb-2 mt-2">
+          {errorMessage}
+        </div>
+        )}
 
         <button onClick={updateTitle}
                 className="btn btn-success mb-2 w-100">
