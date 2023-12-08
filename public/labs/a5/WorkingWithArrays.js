@@ -36,6 +36,11 @@ function WorkingWithArrays() {
       const response = await axios.get(`${API}/${id}`);
       setTodo(response.data);
     };
+
+    const deleteTodo = async (todo) => {
+      const response = await axios.delete(`${API}/${todo.id}`);
+      setTodos(todos.filter((t) => t.id !== todo.id));
+    };  
   
     const removeTodo = async (todo) => {
       const response = await axios
@@ -48,7 +53,14 @@ function WorkingWithArrays() {
         `${API}/${todo.id}/title/${todo.title}`);
       setTodos(response.data);
     };
-  
+
+    const updateTodo = async () => {
+      const response = await axios.put(
+        `${API}/${todo.id}`, todo);
+      setTodos(todos.map((t) => (
+        t.id === todo.id ? todo : t)));
+      setTodo({});
+    };  
   
     useEffect(() => {
       fetchTodos();
@@ -70,6 +82,19 @@ function WorkingWithArrays() {
         <button onClick={createTodo}
                 className="btn btn-primary mb-2 w-100">
           Create Todo
+        </button>
+
+        <button onClick={postTodo} >
+          Post Todo
+        </button>
+
+        <button onClick={updateTodo}>
+          Update Todo
+        </button>
+
+        <button onClick={updateTitle}
+                className="btn btn-success mb-2 w-100">
+          Update Title
         </button>
 
         <input
@@ -98,14 +123,6 @@ function WorkingWithArrays() {
           />
           Completed
         </label>
-        <button onClick={postTodo} >
-          Post Todo
-        </button>
-
-        <button onClick={updateTitle}
-                className="btn btn-success mb-2 w-100">
-          Update Title
-        </button>
         
         <ul className="list-group">
           {todos.map((todo) => (
@@ -120,6 +137,11 @@ function WorkingWithArrays() {
                 onClick={() => removeTodo(todo)}
                 className="btn btn-danger float-end" >
                 Remove
+              </button>
+              <button 
+                onClick={() => deleteTodo(todo)}
+                className="btn btn-danger float-end ms-2">
+                Delete
               </button>
 
               <input
