@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 function WorkingWithArrays() {
     const [todo, setTodo] = useState({
@@ -11,6 +12,30 @@ function WorkingWithArrays() {
 
     const API = "http://localhost:4000/a5/todos";
     const [todo, setTodo] = useState({});
+
+    const [todos, setTodos] = useState([]);
+
+    const createTodo = async () => {
+      const response = await axios.get(`${API}/create`);
+      setTodos(response.data);
+    };
+  
+    const fetchTodos = async () => {
+      const response = await axios.get(API);
+      setTodos(response.data);
+    };
+    const removeTodo = async (todo) => {
+      const response = await axios
+        .get(`${API}/${todo.id}/delete`);
+      setTodos(response.data);
+    };
+  
+    useEffect(() => {
+      fetchTodos();
+    }, []);
+
+
+  
     return (
       <div>
         <h3>Working with Arrays</h3>
@@ -21,20 +46,39 @@ function WorkingWithArrays() {
         className="form-control mb-2"
         type="number"
         />
+   
+        <button onClick={createTodo}
+                className="btn btn-primary mb-2 w-100">
+          Create Todo
+        </button>
 
-      <input
-        value={todo.title}
-        onChange={(e) => setTodo({
-          ...todo, title: e.target.value })}
-        className="form-control mb-2"
-        type="text"
-      />
-      <h3>Updating an Item in an Array</h3>
-      <a
-        href={`${API}/${todo.id}/title/${todo.title}`}
-        className="btn btn-primary me-2" >
-        Update Title to {todo.title}
-      </a>
+        <input
+          value={todo.title}
+          onChange={(e) => setTodo({
+            ...todo, title: e.target.value })}
+          className="form-control mb-2"
+          type="text"
+        />
+        <ul className="list-group">
+          {todos.map((todo) => (
+            <li key={todo.id}
+                className="list-group-item">
+              <button
+                onClick={() => removeTodo(todo)}
+                className="btn btn-danger float-end" >
+                Remove
+              </button>
+              {todo.title}
+            </li>
+          ))}
+        </ul>
+
+        <h3>Updating an Item in an Array</h3>
+        <a
+          href={`${API}/${todo.id}/title/${todo.title}`}
+          className="btn btn-primary me-2" >
+          Update Title to {todo.title}
+        </a>
 
 
         <h3>Deleting from an Array</h3>
